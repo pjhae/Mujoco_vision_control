@@ -13,8 +13,6 @@
 
     YOUR_PATH/python3.X/site-packages/gym/envs/
 
-    
-  *hexy_v4* :
 
 ### 1. Problem Statement
 
@@ -31,7 +29,7 @@ URDF, xml : All links and joints are manually reverse engineered using assembly 
 
 
 ### 3. MUJOCO camera sensor
-![image](https://user-images.githubusercontent.com/74540268/179348919-d6c75e1e-551c-4213-89dd-9feae3f25a6c.png)
+![image](https://user-images.githubusercontent.com/74540268/179349204-2c3fa098-f0e9-4e54-9955-09263b8ba614.png)
 
 For mounting Camera on Robot Model, you can see the file in gym/mujoco/assets/Hexy_ver_2.3/assets
 
@@ -41,6 +39,9 @@ To get RGB data from camera for observation, you can see the file in gym/mujoco/
 ### 4. Policy Net
 
 ![image](https://user-images.githubusercontent.com/74540268/179349101-6eb8b4ff-d24e-486e-99dd-2e28ca9d6620.png)
+"•" Input : Image RGB data + current motor angle
+"•" Output : Desired motor angle
+
 
 
 
