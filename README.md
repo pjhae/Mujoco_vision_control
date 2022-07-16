@@ -9,7 +9,7 @@
 
     YOUR_PATH/python3.X/site-packages/gym/
 
-  2. Clone the repository in
+  2. Clone this repository in
 
     YOUR_PATH/python3.X/site-packages/gym/envs/
 
