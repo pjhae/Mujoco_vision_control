@@ -80,7 +80,7 @@ you can see the code for specific MDP setting(S,A,R..) info
 
 **hexy_v7.py** : One-hot vector verification for *Task 2*
 
-
+ 
 ##
 ### 6. Results
 
