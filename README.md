@@ -35,9 +35,10 @@ For this purpose, two tasks are set up.
 
 ##
 ### 2. Hardware 3D design
-URDF, xml : All links and joints are manually reverse engineered using assembly file from [Arcbotics](http://arcbotics.com/products/hexy/) 
 
 ![hexy_heat2](https://user-images.githubusercontent.com/74540268/169944721-46a89900-eaed-4b17-b6cb-a4496fd48ab6.PNG)
+
+URDF, xml : All links and joints are manually reverse engineered using assembly file from [Arcbotics](http://arcbotics.com/products/hexy/) 
 
 ##
 ### 3. MUJOCO camera sensor
