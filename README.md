@@ -12,8 +12,7 @@
   2. Clone the repository in
 
     YOUR_PATH/python3.X/site-packages/gym/envs/
-    
-    
+
     
   *hexy_v4* :
 
@@ -27,11 +26,7 @@ For this purpose, two tasks are set up.
 
 ### 2. Hardware 3D design
 URDF, xml : All links and joints are manually reverse engineered using assembly file from [Arcbotics](http://arcbotics.com/products/hexy/) 
-#### 2.1. [Solidworks] re-assembly : 
-![hexy_SW6](https://user-images.githubusercontent.com/74540268/169776703-d9660b52-a81e-4ba5-ab9a-c01d76072a12.PNG)
 
-
-#### 2.2. [URDF] Hitbox design : 
 ![hexy_heat2](https://user-images.githubusercontent.com/74540268/169944721-46a89900-eaed-4b17-b6cb-a4496fd48ab6.PNG)
 
 
