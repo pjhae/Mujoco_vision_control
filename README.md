@@ -9,7 +9,7 @@ URDF, xml : All links and joints are manually reverse engineered using assembly 
 
   1. Move to
 
-    YOUR_PATH/raisimLib/raisimGymTorch/raisimGymTorch/
+    YOUR_PATH/python3.X/site-packages/gym/envs/
 
   2. Clone the repository in
 
