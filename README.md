@@ -29,7 +29,7 @@ URDF, xml : All links and joints are manually reverse engineered using assembly 
 
 
 ### 3. MUJOCO camera sensor
-![image](https://user-images.githubusercontent.com/74540268/179349204-2c3fa098-f0e9-4e54-9955-09263b8ba614.png)
+![image](https://user-images.githubusercontent.com/74540268/179350874-c0dfab51-01d5-4d2c-8a16-8684bcc4f9b1.png)
 
 For mounting Camera on Robot Model, you can see the file in gym/mujoco/assets/Hexy_ver_2.3/assets
 
