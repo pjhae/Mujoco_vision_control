@@ -1,12 +1,15 @@
-# Mujoco_walkingRobots
+# Mujoco_vision_control
 
-## Simple walking implementation using RL
-URDF, xml : All links and joints are manually reverse engineered using assembly file from GRABCAD
-https://grabcad.com/library
+## Implementation of vision-based robot control using CNN Feature Extraction and RL.
+
+URDF, xml : All links and joints are manually reverse engineered using assembly file from [Arcbotics](http://arcbotics.com/products/hexy/) 
+
 ### 0. Requirements
  Installation : GYM, MUJOCO, stablebaselines3 + (Linux)
 
- PATH : ~/python3.8/site-packages/gym/envs/
+ 1. Move to
+
+ YOUR_PATH/python3.8/site-packages/gym/envs/
 
 
 ## 
