@@ -37,6 +37,7 @@ To get RGB data from camera for observation, you can see the file in gym/mujoco/
 
 
  
+ 
 ### 4. Policy Net
 
 ![image](https://user-images.githubusercontent.com/74540268/179349101-6eb8b4ff-d24e-486e-99dd-2e28ca9d6620.png)
