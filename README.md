@@ -1,6 +1,6 @@
 # Mujoco_vision_control
 
-## Implementation of vision-based robot control using CNN Feature Extraction and RL.
+## Vision-based robot control using CNN Feature Extraction and RL.
 
 ### 0. Requirements
  Installation : GYM, MUJOCO, stablebaselines3 + (Linux)
