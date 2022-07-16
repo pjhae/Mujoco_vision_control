@@ -57,7 +57,7 @@ you can see the code for specific MDP setting(S,A,R..) info
     YOUR_PATH/python3.X/site-packages/gym/envs/mujoco/
 
 
-**hexy_v4.py** : Just walking without vision infomation (using only current qpos as observation)
+**hexy_v4.py** : Just walking(Rotation, going forward) without vision infomation (using only current qpos as observation)
 
 **hexy_v5.py** : *Task 1*
 
