@@ -31,6 +31,8 @@
 Our main goal is to verify that robot control can be implemented in a simulated environment using vision-based RL algorithms.
 
 For this purpose, two tasks are set up.
+
+
 ![image](https://user-images.githubusercontent.com/74540268/179348883-e2e23c23-31f5-40ec-bd59-769db91b549f.png)
 
 ##
