@@ -3,7 +3,7 @@
 ## Vision-based robot control using CNN Feature Extraction and RL.
 
 ### 0. Requirements
- Installation : GYM, MUJOCO, stablebaselines3 + (Linux)
+ Installation : GYM, MUJOCO, Stable-Baselines3 + (Linux)
 
   1. Move to :
 
