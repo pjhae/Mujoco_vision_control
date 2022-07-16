@@ -3,11 +3,9 @@ import matplotlib.pyplot as plt
 from gym import utils
 from gym.envs.mujoco import mujoco_env
 
-
 # if you want to receive pixel data from camera using render("rgb_array",_,_,_,_)
 # you should change below line <site_packages>/gym/envs/mujoco/mujoco_env.py to:
 # self.viewer = mujoco_py.MjRenderContextOffscreen(self.sim, None, -1)
-
 
 DEFAULT_CAMERA_CONFIG = {
     'distance': 1.5,
@@ -26,62 +24,14 @@ class HexyEnv(mujoco_env.MujocoEnv, utils.EzPickle):
 
     @property
     def is_healthy(self):
+
         # if hexy was tilted or changed position too much, reset environments
-        # is_healthy = np.abs(self.state_vector()[1]) < 0.5  and (np.abs(self.state_vector()[3:6]) < 0.7).all()
-
         is_healthy = ((self.state_vector()[2]) > -0.05 and (self.state_vector()[0]) < 0.15 and (self.state_vector()[1]) < 0.15)
-
-        # #######
-        # if (self.state_vector()[5] % (2 * np.pi) < np.pi / 30 or self.state_vector()[5] % (
-        #         2 * np.pi) > 2 * np.pi - np.pi / 30):
-        #     is_healthy = False
-        #     print("RESET : Goal IN!")
-        #     return is_healthy
-        # #######
-
-        for i in range(self.sim.data.ncon):
-            sim_contact = self.sim.data.contact[i]
-
-            if (str(self.sim.model.geom_id2name(sim_contact.geom1)) == "Map_circle1"):
-                is_healthy = False
-                print("RESET : collision!")
-                return is_healthy
-            elif(str(self.sim.model.geom_id2name(sim_contact.geom2)) == "Map_circle1"):
-                is_healthy = False
-                print("RESET : collision!")
-                return is_healthy
-
-            elif (str(self.sim.model.geom_id2name(sim_contact.geom1)) == "Map_circle2"):
-                is_healthy = False
-                print("RESET : collision!")
-                return is_healthy
-            elif(str(self.sim.model.geom_id2name(sim_contact.geom2)) == "Map_circle2"):
-                is_healthy = False
-                print("RESET : collision!")
-                return is_healthy
-
-            elif (str(self.sim.model.geom_id2name(sim_contact.geom1)) == "Map_circle3"):
-                is_healthy = False
-                print("RESET : collision!")
-                return is_healthy
-            elif(str(self.sim.model.geom_id2name(sim_contact.geom2)) == "Map_circle3"):
-                is_healthy = False
-                print("RESET : collision!")
-                return is_healthy
-
-            elif (str(self.sim.model.geom_id2name(sim_contact.geom1)) == "Map_circle4"):
-                is_healthy = False
-                print("RESET : collision!")
-                return is_healthy
-            elif(str(self.sim.model.geom_id2name(sim_contact.geom2)) == "Map_circle4"):
-                is_healthy = False
-                print("RESET : collision!")
-                return is_healthy
 
         return is_healthy
 
-
     @property
+
     def done(self):
         done = not self.is_healthy
         return done
@@ -89,19 +39,14 @@ class HexyEnv(mujoco_env.MujocoEnv, utils.EzPickle):
     def step(self, action):
     
         yaw_init = self.state_vector()[5]
-
         self.do_simulation(action, self.frame_skip)
 
-        # update action and observation
-
+        ## Update observation
         self._obs_buffer1 = self.state_vector()[6:24]
 
-        # calculate rewards and costs
-        
+        ## Calculate rewards and costs
         z_ang_vel = (self.state_vector()[5] - yaw_init)
         torque_rms = np.sqrt(np.mean(np.square(self.sim.data.actuator_force[:])))
-
-        # print(self.state_vector()[5] % (2*np.pi))
 
         if abs(z_ang_vel) < 0.00001:
             reward = -1
@@ -114,49 +59,13 @@ class HexyEnv(mujoco_env.MujocoEnv, utils.EzPickle):
                 reward = 10 * z_ang_vel / (torque_rms + 1) + 0.001
 
 
-        for i in range(self.sim.data.ncon):
-            sim_contact = self.sim.data.contact[i]
-
-            if (str(self.sim.model.geom_id2name(sim_contact.geom1)) == "Map_circle1"):
-                reward += -10
-                print("RESET : collision!")
-
-            elif(str(self.sim.model.geom_id2name(sim_contact.geom2)) == "Map_circle1"):
-                reward += -10
-                print("RESET : collision!")
-
-            elif (str(self.sim.model.geom_id2name(sim_contact.geom1)) == "Map_circle2"):
-                reward += -10
-                print("RESET : collision!")
-
-            elif(str(self.sim.model.geom_id2name(sim_contact.geom2)) == "Map_circle2"):
-                reward += -10
-                print("RESET : collision!")
-
-
-            elif (str(self.sim.model.geom_id2name(sim_contact.geom1)) == "Map_circle3"):
-                reward += -10
-                print("RESET : collision!")
-
-            elif(str(self.sim.model.geom_id2name(sim_contact.geom2)) == "Map_circle3"):
-                reward += -10
-                print("RESET : collision!")
-
-            elif (str(self.sim.model.geom_id2name(sim_contact.geom1)) == "Map_circle4"):
-                reward += -10
-                print("RESET : collision!")
-
-            elif(str(self.sim.model.geom_id2name(sim_contact.geom2)) == "Map_circle4"):
-                reward += -10
-                print("RESET : collision!")
-
         if (self.state_vector()[5] % (2 * np.pi) < np.pi / 30) :
-            #print("GOAL IN [1] !!!!!")
-            reward = 100
+            print("GOAL IN [1] !!!!!")
+            reward = 500
 
         elif (self.state_vector()[5] % (2 * np.pi) > 2 * np.pi - np.pi / 30):
-            #print("GOAL IN [2] !!!!!")
-            reward = 100
+            print("GOAL IN [2] !!!!!")
+            reward = 500
 
         done = self.done
         observation = self._get_obs()
@@ -169,6 +78,7 @@ class HexyEnv(mujoco_env.MujocoEnv, utils.EzPickle):
 
     def _get_obs(self):
 
+        ## 1. For Training
         #camera_data = np.array(self.render("rgb_array", 148, 148, 2))
         #CHW = np.transpose(camera_data, (2, 0, 1))
 
@@ -176,9 +86,9 @@ class HexyEnv(mujoco_env.MujocoEnv, utils.EzPickle):
         #plt.imshow(camera_data)
         #plt.show()
 
-        ## For rendering check
+        ## 2. For rendering check
         data = self._get_viewer("rgb_array").read_pixels(148, 148, depth=False)
-        CHW = np.transpose(data[::-1,:], (2, 0, 1))
+        CHW = np.transpose(data[::-1, :, :] , (2, 0, 1))
 
         obs_dct = {}
         obs_dct['image'] = np.array(CHW)/255.0
@@ -188,14 +98,31 @@ class HexyEnv(mujoco_env.MujocoEnv, utils.EzPickle):
 
 
     def reset_model(self):
+
+        ## 1. Using Discretization factor
+        ## You should consider angle of view (Yellow box should be in sight)
+
+        # disc_factor = 2
+        # rnd = np.random.randint(disc_factor)
+        # init_yaw =  np.pi/disc_factor +  2*np.pi/disc_factor * rnd
+        # qpos = np.array([0.0,0.0,-0.005,0,0,init_yaw,0,-0.8,0.6,0,-0.8,0.6,0,-0.8,0.6,0,-0.8,0.6,0,-0.8,0.6,0,-0.8,0.6])
+        # qvel = self.init_qvel
+
+
+        ## 2. Start from 2 initial heading angle (disc_factor = 2)
+
         disc_factor = 2
         rnd = np.random.randint(disc_factor)
-        
-        init_yaw =  np.pi/disc_factor +  2*np.pi/disc_factor * rnd
+
+        if rnd == 0:
+            init_yaw = np.pi/2.5
+        else:
+            init_yaw = 2*np.pi - np.pi/2.5
+
+
         qpos = np.array([0.0,0.0,-0.005,0,0,init_yaw,0,-0.8,0.6,0,-0.8,0.6,0,-0.8,0.6,0,-0.8,0.6,0,-0.8,0.6,0,-0.8,0.6])
-        
         qvel = self.init_qvel
-        
+
         self.set_state(qpos, qvel)
 
         observation = self._get_obs()

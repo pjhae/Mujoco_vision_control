@@ -142,10 +142,3 @@ class HexyEnv(mujoco_env.MujocoEnv, utils.EzPickle):
                 getattr(self.viewer.cam, key)[:] = value
             else:
                 setattr(self.viewer.cam, key, value)
-
-    # def viewer2_setup(self):
-    #     for key, value in DEFAULT_CAMERA_CONFIG.items():
-    #         if isinstance(value, np.ndarray):
-    #             getattr(self.viewer_2.cam, key)[:] = value
-    #         else:
-    #             setattr(self.viewer_2.cam, key, value)
