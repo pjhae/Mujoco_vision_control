@@ -5,14 +5,27 @@
 ### 0. Requirements
  Installation : GYM, MUJOCO, stablebaselines3 + (Linux)
 
-  1. Move to
+  1. Move to :
 
     YOUR_PATH/python3.X/site-packages/gym/
 
   2. Clone this repository in
 
     YOUR_PATH/python3.X/site-packages/gym/envs/
+    
+  3. Move [train_test_] directory to :
 
+    YOUR_PATH/python3.X/site-packages/gym/
+    
+  4. Train/Test
+
+    cd YOUR_PATH/python3.X/site-packages/gym/train_test_
+    
+    (Training v4,v7) python PPO_train.py
+    (Training v5,v6) python PPO_train_custum-v2.py
+    (Test) python PPO_check.py
+    
+    
 ##
 ### 1. Problem Statement
 
