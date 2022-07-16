@@ -20,7 +20,6 @@
   4. Train/Test
 
     cd YOUR_PATH/python3.X/site-packages/gym/train_test_
-    
     (Training v4,v7) python PPO_train.py
     (Training v5,v6) python PPO_train_custum-v2.py
     (Test) python PPO_check.py
