@@ -84,5 +84,9 @@ you can see the code for specific MDP setting(S,A,R..) info
 ##
 ### 6. Results
 
-[Arcbotics](https://youtu.be/kn1GcEtVa3g) 
+
+**Video : [YOUTUBE link](https://youtu.be/kn1GcEtVa3g)**
+
+You can watch **video** through the link above!
+
 
